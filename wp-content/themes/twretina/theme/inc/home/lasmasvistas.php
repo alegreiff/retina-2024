@@ -28,15 +28,15 @@ function rl_muestra_las_mas_vistas() {
 function rl_muestra_las_mas_vistas_html($numero, $peliculas, $texto) {
 
 ?>
-    <div class="block md:flex gap-8 items-center ">
-        <div class="text-left  w-full md:w-1/3 mb-4 md:mb-0  ">
-            <div class="text-3xl"> Las <span class="font-bold"><?php echo $numero; ?></span> más vistas </div>
-            <div class="text-xl mt-8"> <?php echo $texto; ?> </div>
-        </div>
-        <section class="w-2/3 splide mx-auto " id="js_lasmasvistas">
-            <div class="splide__track">
-                <ul class="splide__list">
-                    <?php
+<div class="block md:flex gap-8 items-center ">
+    <div class="text-left  w-full md:w-1/3 mb-4 md:mb-0  ">
+        <div class="text-3xl"> Las <span class="font-bold"><?php echo $numero; ?></span> más vistas </div>
+        <div class="text-xl mt-8"> <?php echo $texto; ?> </div>
+    </div>
+    <section class="w-2/3 splide mx-auto " id="js_lasmasvistas">
+        <div class="splide__track">
+            <ul class="splide__list">
+                <?php
                     $indice = 1;
 
                     foreach ($peliculas as $peli) {
@@ -53,7 +53,7 @@ function rl_muestra_las_mas_vistas_html($numero, $peliculas, $texto) {
                     ?>
 
 
-                        <?php get_template_part(
+                <?php get_template_part(
                             'template-parts/posteres/poster',
                             'homesplide',
                             array(
@@ -72,14 +72,14 @@ function rl_muestra_las_mas_vistas_html($numero, $peliculas, $texto) {
                             )
                         ); ?>
 
-                    <?php
+                <?php
                         $indice++;
                     }
                     ?>
-                </ul>
-            </div>
-        </section>
-    </div>
+            </ul>
+        </div>
+    </section>
+</div>
 
 <?php
 

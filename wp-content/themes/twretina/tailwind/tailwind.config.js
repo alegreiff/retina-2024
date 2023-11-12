@@ -35,8 +35,9 @@ module.exports = {
 					morablanco: '#F7D6FF',
 					amarillo: '#FFA700',
 					verde: '#00AD96',
-					negro: '#36454F',
+					verdeclaro: '#84ffef',
 					blanco: '#f8f8f8',
+					negro: '#36454F',
 				},
 				/* https://uicolors.app/create */
 			},

@@ -14,31 +14,31 @@ function personajes_cine_home() {
 
 
 ?>
-<div class="">
+    <div class="">
 
-    <h2 class="h2_home"><?php echo $texto; ?> </h2>
-    <p class="p_copy "><?php echo $copy; ?></p>
-    <section class="splide bg-red-800  p-1" id="js_retinapersonajes">
+        <h2 class="h2_home"><?php echo $texto; ?> </h2>
+        <p class="p_copy "><?php echo $copy; ?></p>
+        <section class="splide   p-1" id="js_retinapersonajes">
 
-        <div class="splide__track">
-            <ul class="splide__list space-x-0">
+            <div class="splide__track">
+                <ul class="splide__list space-x-0">
 
 
-                <?php
+                    <?php
                     personajes_cine_loop($lista);
                     ?>
-            </ul>
+                </ul>
 
-        </div>
-        <div class="flex justify-center">
-            <a href="#" class=" self-center btn btn-secondary mt-4"><?php echo $botontexto ?></a>
-        </div>
+            </div>
+            <div class="flex justify-center">
+                <a href="#" class=" self-center retibutton mt-4"><?php echo $botontexto ?></a>
+            </div>
 
-    </section>
+        </section>
 
-</div><!--  FIN PELÍCULAS QUE SE VAN DE RETINA  -->
+    </div><!--  FIN PELÍCULAS QUE SE VAN DE RETINA  -->
 
-<?php
+    <?php
 
 
 
@@ -65,20 +65,19 @@ function personajes_cine_loop($lista) {
         }
 
     ?>
-<li
-    class="splide__slide  duration-500 group pb-24   text-center bg-red-500  hover:bg-green-300 rounded-t-2xl translate-y-24 ">
-    <a href="<?php echo get_post_permalink($item); ?>" class="">
+        <li class="splide__slide  duration-500 group pb-24   text-center bg-rl-moramedio  hover:bg-rl-morasuave rounded-t-2xl translate-y-24 ">
+            <a href="<?php echo get_post_permalink($item); ?>" class="">
 
-        <?php echo $imagenDIR; ?>
-        <h3 class="text-white h-20 -translate-y-24  px-2  font-bold text-2xl sm:text-xl lg:text-2xl">
-            <?php echo $titulo; ?></h3>
-        <span class="block text-white -translate-y-12 text-xl uppercase "><?php echo $pais; ?></span>
+                <?php echo $imagenDIR; ?>
+                <h3 class="text-white h-20 -translate-y-24  px-2  font-bold text-2xl sm:text-xl lg:text-2xl">
+                    <?php echo $titulo; ?></h3>
+                <span class="block text-white -translate-y-12 text-xl uppercase "><?php echo $pais; ?></span>
 
-        <div class=" bg-transparent"><?php echo $miniatura; ?></div>
+                <div class=" bg-transparent"><?php echo $miniatura; ?></div>
 
 
-    </a>
-</li>
+            </a>
+        </li>
 
 <?php
 
