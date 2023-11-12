@@ -1,0 +1,3 @@
+.colordev {
+	@apply bg-red-500 sm:bg-yellow-500  md:bg-sky-500 xl:bg-amber-500 2xl:bg-green-400;
+}

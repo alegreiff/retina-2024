@@ -1,0 +1,18 @@
+.retibutton {
+	@apply bg-rl-morasuave 
+    border-2 border-transparent
+    duration-200
+    hover:bg-transparent 
+    hover:border-2 hover:border-rl-amarillo
+    hover:text-rl-amarillo
+    focus:outline-none focus:ring-4 focus:ring-lime-400 
+    font-medium 
+    rounded-full 
+    text-lg px-5 py-2.5 
+    text-center mb-2;
+}
+
+/* .retibutton2 {
+	@apply ;
+}
+ */

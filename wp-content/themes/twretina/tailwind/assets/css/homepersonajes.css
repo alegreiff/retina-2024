@@ -1,0 +1,27 @@
+.personaje {
+	/* clip-path: rect(10px, 20px, 30px, 40px); */
+
+	/* clip-path: inset(25px 0px 25px 0px); */
+
+	/* overflow: hidden; */
+	/* margin-top: -25px; */
+	z-index: 0;
+	@apply aspect-[4/2] object-cover;
+}
+
+.rl_round_director {
+	/* margin-top: 1.7rem; */
+
+	/* width: 6rem;
+	height: 6rem;
+	object-fit: cover;
+	object-position: 0% 18%;
+	border-radius: 50%;
+	filter: grayscale(100%);
+	margin: -2rem auto 0 auto; */
+
+	filter: grayscale(100%);
+	/* margin: -6rem auto 0 auto; */
+	clip-path: circle(66px at center);
+	@apply mx-auto -translate-y-24;
+}

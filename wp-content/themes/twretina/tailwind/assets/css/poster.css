@@ -1,0 +1,27 @@
+.retina_poster {
+	/* max-width: 290px; */
+	/* min-width: 180px; */
+	/* margin: 0.5em auto; */
+	/* border: 8px pink solid; */
+	@apply max-w-[226px] min-w-[225px] text-center hover:bg-pink-400 rounded-2xl; /* bg-slate-900 */
+
+	/* @apply max-w-[271px] min-w-[270px] text-center hover:bg-slate-900 rounded-2xl; */
+	/* @apply max-w-[181px] min-w-[180px] text-center hover:bg-slate-900 rounded-2xl; */
+}
+
+.rl_pais {
+	text-transform: uppercase;
+	@apply bg-rl-morablanco  rounded-md text-rl-morasuave font-bold absolute top-4 right-0 px-2 py-1;
+}
+.rl_pais_masvistas {
+	text-transform: uppercase;
+	@apply bg-transparent border-2 border-rl-morablanco  rounded-md text-rl-morablanco font-bold text-sm mt-2 float-right mr-4 px-2 py-1;
+	/* @apply bg-[url('../theme/assets/images/muescaverde22.svg')] group-hover:bg-[url('../theme/assets/images/muescamorada22.svg')]; */
+}
+/* span.rl_pais:hover {
+	background-image: url("../theme/assets/images/muescamorada22.svg");
+} */
+
+/* 
+
+/* background-image: url("../theme/assets/images/muescaverde22.svg"); */

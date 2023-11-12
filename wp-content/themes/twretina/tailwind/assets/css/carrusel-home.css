@@ -1,0 +1,32 @@
+.caroussele {
+	@apply lg:grid lg:grid-cols-2;
+}
+
+/* .rl_home_carrusel h3 {
+	@apply font-bold;
+}
+
+.rl_home_carrusel h5 {
+	@apply text-lg;
+} */
+
+#js_carruselinicio {
+	@apply pb-10;
+}
+
+#js_carruselinicio > ul li button {
+	@apply h-[0.9rem] w-[0.9rem] mx-3 bg-rl-blanco/30;
+}
+#js_carruselinicio > ul li button.is-active {
+	@apply h-[0.7rem] w-[0.7rem] mx-3 bg-rl-blanco;
+}
+
+.splide__arrow {
+	background: rgba(255, 255, 255, 0.1) !important;
+}
+.splide__arrow svg {
+	fill: white !important;
+}
+.splide__arrow:hover:not(:disabled) {
+	background-color: rgba(255, 255, 255, 0.212) !important;
+}
