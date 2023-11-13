@@ -70,15 +70,20 @@ add_action('wp_enqueue_scripts', 'rl_buscador_peliculas');
 
 function temporal_js() {
 
-    wp_register_style('temposwippercss', 'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css');
+    /* wp_register_style('temposwippercss', 'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css');
     wp_enqueue_style('temposwippercss');
 
-    wp_register_script("temposwipperjs", 'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js', array(), '15.4', true);
+    wp_register_script("temposwipperjs", 'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js', array(), '15.4', true); */
+
+    wp_register_style('spslidecss', 'https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css');
+    wp_enqueue_style('spslidecss');
+
+    wp_register_script("spslidejs", 'https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js', array(), '4.1.4', true);
 
     wp_enqueue_script(
         'temporalswipper',
         get_template_directory_uri() . '/js/temporal.min.js',
-        array('temposwipperjs'),
+        array('spslidejs'),
         RL_VERSION,
         true
     );

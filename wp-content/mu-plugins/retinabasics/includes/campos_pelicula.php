@@ -18,48 +18,35 @@ function rl_galeria($cadena) {
 
 ?>
 
-<div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper2">
+    <sectipn class="splide" id="js_single_video_galeria">
 
-    <div class="swiper-wrapper">
+        <div class="splide__track">
 
-        <?
-            $contador = 0;
-            foreach ($res as $image) {
-                $contador++;
-                $media = wp_get_attachment_image_src($image, 'full');
-            ?>
-        <div class="swiper-slide">
-            <img src="<?php echo $media[0] ?>" />
+            <ul class="splide__list">
+                <?
+                $contador = 0;
+                foreach ($res as $image) {
+                    $contador++;
+                    $media = wp_get_attachment_image_src(
+                        $image,
+                        'galerias'
+                    );
+
+                ?>
+                    <div class="splide__slide grid place-items-center bg-red-500 p-8 m-4">
+                        <img src="<?php echo $media[0] ?>" />
+                    </div>
+
+                <?php
+                }
+
+                ?>
+            </ul>
         </div>
 
-        <?php
-            }
-
-            ?>
-    </div>
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
-</div>
-<div thumbsSlider="" class="swiper mySwiper">
-    <div class="swiper-wrapper">
-        <?php
-
-            foreach ($res as $ima2) {
-                $media2 = wp_get_attachment_image_src($ima2, 'full');
-            ?>
-
-        <div class="swiper-slide">
-            <img src="<?php echo $media2[0] ?>" />
-        </div>
+    </sectipn>
 
 
-
-        <?php
-            }
-
-            ?>
-    </div>
-</div>
 <?php
 
 

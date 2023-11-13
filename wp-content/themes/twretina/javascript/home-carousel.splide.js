@@ -23,6 +23,38 @@
 			}).mount();
 		}
 
+		/* const blogInicio = this.getElementById('js_retinablog');
+
+		if (blogInicio) {
+			new Splide('#js_retinablog', {
+				perPage: 1,
+				perMove: 1,
+				arrows: true,
+				type: 'loop',
+				rewind: true,
+				pagination: false,
+				gap: 15,
+
+				mediaQuery: 'min',
+				breakpoints: {
+					1023: {
+						type: 'loop',
+						perPage: 1,
+						perMove: 1,
+						arrows: true,
+						rewind: true,
+						pagination: false,
+						
+					},
+					1024: {
+						
+						destroy: true,
+					},
+				},
+				
+			}).mount();
+		} */
+
 		const peliculasBase = this.getElementById('retinaxios');
 		if (peliculasBase) {
 			new Splide('#retinaxios', {
@@ -34,6 +66,64 @@
 				gap: 25,
 				autoplay: true,
 				interval: 10000,
+				//start: inicioSlide,
+			}).mount();
+		}
+
+		const personajesRetina = this.getElementById('js_retinapersonajes');
+		if (personajesRetina) {
+			new Splide('#js_retinapersonajes', {
+				perPage: 1,
+				perMove: 1,
+				arrows: true,
+				type: 'loop',
+				rewind: true,
+				pagination: false,
+				gap: 15,
+
+				mediaQuery: 'min',
+				breakpoints: {
+					640: {
+						perPage: 2,
+						arrows: true,
+						//destroy: true,
+					},
+					1024: {
+						perPage: 4,
+						arrows: false,
+						//destroy: true,
+					},
+				},
+				//start: inicioSlide,
+			}).mount();
+		}
+
+		const seleccionadosRetina = this.getElementById(
+			'js_retinaseleccionados'
+		);
+		if (seleccionadosRetina) {
+			new Splide('#js_retinaseleccionados', {
+				perPage: 1,
+				perMove: 1,
+				arrows: true,
+				type: 'loop',
+				rewind: true,
+				pagination: false,
+				gap: 15,
+
+				mediaQuery: 'min',
+				breakpoints: {
+					640: {
+						perPage: 2,
+						arrows: true,
+						//destroy: true,
+					},
+					1024: {
+						perPage: 3,
+						arrows: false,
+						//destroy: true,
+					},
+				},
 				//start: inicioSlide,
 			}).mount();
 		}
@@ -63,6 +153,12 @@
 				gap: 25,
 				autoplay: true,
 				interval: 10000,
+				/* mediaQuery: 'min',
+				breakpoints: {
+					640: {
+						destroy: true,
+					},
+				}, */
 				//start: inicioSlide,
 			}).mount();
 		}
@@ -74,8 +170,8 @@
 			rewind: false,
 			pagination: false,
 			gap: 25,
-			autoplay: true,
-			interval: 10000,
+			/* autoplay: true,
+			interval: 10000, */
 		}).mount();
 	});
 })();

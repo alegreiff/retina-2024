@@ -15,12 +15,6 @@
 		background-size: 102%;
 		@apply bg-[url('../theme/assets/images/trailer-titulo.svg')]  font-bold text-3xl xl:w-1/3; */
 	}
-	.rl_serie {
-		@apply rounded-xl bg-lime-300 p-2 my-4;
-	}
-	.rl_serie2 {
-		@apply rounded-xl bg-lime-300 p-2 my-4;
-	}
 
 	.uno {
 		@apply bg-red-200 bg-opacity-40;

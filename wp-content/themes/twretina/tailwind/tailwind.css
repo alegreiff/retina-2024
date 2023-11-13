@@ -59,3 +59,7 @@
 .pollo {
 	@apply bg-sky-400;
 }
+
+:root {
+	--primary-color: yellow;
+}

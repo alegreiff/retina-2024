@@ -32,10 +32,10 @@ if (isset($args['estilo'])) {
 <li class="splide__slide  group relative retina_poster <?php echo $activa; ?> <?php echo $estreno; ?> ">
     <div class="pt-8 px-4">
 
-        <img class=" w-full object-cover group-hover:blur-[3px] group-hover:grayscale rounded-2xl" loading="lazy" src="<?php echo $poster; ?>" alt="Afiche <?php echo $titulo; ?>" title="<?php echo $titulo; ?>">
+        <img class=" w-full object-cover group-hover:blur-[3px] group-hover:grayscale rounded-lg" loading="lazy" src="<?php echo $poster; ?>" alt="Afiche <?php echo $titulo; ?>" title="<?php echo $titulo; ?>">
 
     </div>
-    <a href="<?php echo $enlace; ?>" class="absolute top-0 left-0 z-10 flex flex-col items-center justify-start w-full h-0 duration-500 opacity-0 rounded-2xl bg-rl-morafuerte group-hover:h-full group-hover:opacity-80 group-hover:rounded-2xl ">
+    <a href="<?php echo $enlace; ?>" class="absolute top-0 left-0 z-10 flex flex-col items-center justify-start w-full h-0 duration-500 opacity-0 rounded-2xl bg-rl-morafuerte group-hover:h-full group-hover:opacity-80 group-hover:rounded-lg ">
 
         <div class="static px-6 pt-12 flex flex-col justify-between <?php echo $altohover; ?>">
             <h3 class="font-bold text-xl"><?php echo $titulo; ?></h3>
@@ -46,7 +46,7 @@ if (isset($args['estilo'])) {
                         <path d="M 32 6.8007812 C 18.1 6.8007812 6.8007813 18.1 6.8007812 32 C 6.8007812 45.9 18.1 57.300781 32 57.300781 C 45.9 57.300781 57.300781 45.9 57.300781 32 C 57.300781 18.1 45.9 6.8007813 32 6.8007812 z M 32 9.8007812 C 44.2 9.8007812 54.300781 19.799609 54.300781 32.099609 C 54.300781 44.399609 44.3 54.300781 32 54.300781 C 19.7 54.300781 9.6992188 44.3 9.6992188 32 C 9.6992188 19.7 19.8 9.8007812 32 9.8007812 z M 31.976562 15.478516 A 1.50015 1.50015 0 0 0 30.5 17 L 30.5 29.40625 A 3 3 0 0 0 32 35 A 3 3 0 0 0 34.59375 33.5 L 42 33.5 A 1.50015 1.50015 0 1 0 42 30.5 L 34.597656 30.5 A 3 3 0 0 0 33.5 29.404297 L 33.5 17 A 1.50015 1.50015 0 0 0 31.976562 15.478516 z">
                         </path>
                     </svg>
-                    28 min.</span>
+                    <?php echo $duracion; ?> min.</span>
 
 
 
@@ -83,7 +83,7 @@ if (isset($args['estilo'])) {
         $dia = substr($fechasalida, 6, 2);
         $mes = mes_salida_pelicula(substr($fechasalida, 4, 2));
     ?>
-        <p class="p-2 text-sm font- text-center border-2 border-rl-morablanco bg-transparent rounded-lg mx-4 mt-4 z-20">
+        <p class="p-2 text-sm font- text-center border-2 border-rl-morablanco text-rl-morablanco bg-transparent rounded-lg mx-4 mt-4 z-20">
             <?php echo "Salida: <span class='font-bold p-1'>" . $dia . " de " . $mes . "</span>"; ?></p>
     <?php }
 

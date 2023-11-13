@@ -68,3 +68,4 @@ add_image_size('poster-mini', 230, 325, true);
 add_image_size('persona-mini', 160, 240, true);
 add_image_size('serie-main', 1200, 450, true);
 add_image_size('destacada-mini', 300, 215, true);
+add_image_size('galerias', 300, 300, true);

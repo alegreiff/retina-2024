@@ -23,20 +23,20 @@ function muestra_creditos($campo) {
         $label = nombre_taxonomia_persona($campo, 'campo', 'label');
     }
     if (isset($personas_contenidos)) {
-        $salida .= '<div>' . $label . ': </div>';
+        $salida .= '<span>' . $label . ': </span>';
         $ta = array();
         foreach ($personas_contenidos as $persona) :
             if (strlen($persona->post_content) > 0) {
-                $a_p = '<a href="' . get_permalink($persona->ID) . '" class="enlaceoscuro" >' . get_the_title($persona->ID) . '</a>';
+                $a_p = '<a href="' . get_permalink($persona->ID) . '" class="enlaceoscuro"><span class="rl_formato_dato">' . get_the_title($persona->ID) . '</span></a>';
             } else {
-                $a_p = get_the_title($persona->ID);
+                $a_p = "<span class='rl_formato_dato'>" . get_the_title($persona->ID) . "</span>";
             }
             array_push($ta, $a_p);
         endforeach;
         $salida .= implode(', ', $ta);
         $salida .= '';
     }
-    return "<div class='mb-4 '>" . $salida . "</div>";
+    return "<span>" . $salida . "</span>";
 }
 
 function nombre_taxonomia_persona($nombre, $entrada, $salida) {
@@ -109,12 +109,18 @@ function nombre_taxonomia_persona($nombre, $entrada, $salida) {
 }
 
 function formato_dato($dato) {
-    return '<div>' . $dato . '</div>';
+    return '<span class="rl_formato_dato">' . $dato . '</span>';
 }
 
 function retlat_tax_link($tax) {
     $pre = wp_get_post_terms(get_the_ID(), $tax)[0];
     return '<a href="' . get_term_link($pre->name, $pre->taxonomy) . '" class="enlaceoscuro">' . $pre->name . '</a>';
+}
+
+
+function retlat_tax_simple($tax) {
+    $pre = wp_get_post_terms(get_the_ID(), $tax)[0];
+    return $pre->name;
 }
 
 function retlat_tax($tax) {
