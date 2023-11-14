@@ -13,8 +13,8 @@
 	/* @apply rounded-xl bg-lime-300 p-2 my-4; */
 }
 span.rl_formato_dato {
-	@apply font-bold m-1;
+	@apply font-bold mr-1;
 }
-.rl_single_video_personajes span:not:first-child {
-	@apply text-green-600 m-1;
+.rl_single_video_personajes span {
+	@apply mr-1;
 }

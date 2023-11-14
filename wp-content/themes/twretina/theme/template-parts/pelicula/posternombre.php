@@ -21,10 +21,10 @@ $sitioweb = get_field('webpage');
 $contacto = get_field('rl_contacto');
 $galeria = get_field('gallery', null, false);
 
-$duracion = '<svg class="inline" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="32" height="32" fill="#f8f8f8" viewBox="0 0 64 64">
-<path d="M 32 6.8007812 C 18.1 6.8007812 6.8007813 18.1 6.8007812 32 C 6.8007812 45.9 18.1 57.300781 32 57.300781 C 45.9 57.300781 57.300781 45.9 57.300781 32 C 57.300781 18.1 45.9 6.8007813 32 6.8007812 z M 32 9.8007812 C 44.2 9.8007812 54.300781 19.799609 54.300781 32.099609 C 54.300781 44.399609 44.3 54.300781 32 54.300781 C 19.7 54.300781 9.6992188 44.3 9.6992188 32 C 9.6992188 19.7 19.8 9.8007812 32 9.8007812 z M 31.976562 15.478516 A 1.50015 1.50015 0 0 0 30.5 17 L 30.5 29.40625 A 3 3 0 0 0 32 35 A 3 3 0 0 0 34.59375 33.5 L 42 33.5 A 1.50015 1.50015 0 1 0 42 30.5 L 34.597656 30.5 A 3 3 0 0 0 33.5 29.404297 L 33.5 17 A 1.50015 1.50015 0 0 0 31.976562 15.478516 z">
-</path>
-</svg> ' . $duracion . ' min.';
+$duracion = '<svg class="text-rl-blanco  stroke-current fill-transparent w-8 h-8 inline"  viewBox="0 0 24 24" >
+<path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+' . $duracion . ' min.';
 $microdatos = array($pais, $year, $duracion, $genero);
 
 
@@ -42,8 +42,8 @@ $muestraposter = wp_get_attachment_image($poster, 'poster-mini', false, array(
     <?php
     if ($inactiva) {
     ?>
-        <div class="">PELICULA INACTIVÉ
-        </div>
+    <div class="">PELICULA INACTIVÉ
+    </div>
     <?php
     }
     ?>
@@ -52,7 +52,7 @@ $muestraposter = wp_get_attachment_image($poster, 'poster-mini', false, array(
         <?php
         if ($otronombre) {
         ?>
-            <h3 class="rl_otronombre"><?php echo $otronombre; ?></h3>
+        <h3 class="rl_otronombre"><?php echo $otronombre; ?></h3>
         <?php
         }
         ?>
@@ -104,12 +104,13 @@ $muestraposter = wp_get_attachment_image($poster, 'poster-mini', false, array(
         ?>
     </div>
 </div>
-<div class="container mx-auto">
-    <span class="hidden md:block ">
+<div class="container mx-auto  p-8">
+    <span class="hidden md:block">
         <?php echo rl_galeria($galeria);
         ?>
     </span>
 </div>
+
 
 <!-- 
 

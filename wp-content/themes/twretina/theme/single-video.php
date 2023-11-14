@@ -32,7 +32,7 @@ $peliculaSerie = $serie ? true : false;
         array(
             'familia' => $geodatos['familia']
         )
-    ); ?>
+    );  ?>
 </div>
 
 
@@ -51,7 +51,17 @@ $peliculaSerie = $serie ? true : false;
 
 </div>
 
-<div class="container color3070 h-[450px] mx-auto mt-0">
+<div class="container   mx-auto mt-0">
+
+
+    <?php get_template_part(
+        'template-parts/pelicula/datos',
+        'adicionales',
+
+
+    ); ?>
+
+
 
 </div>
 

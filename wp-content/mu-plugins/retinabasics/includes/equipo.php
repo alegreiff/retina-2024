@@ -36,7 +36,7 @@ function muestra_creditos($campo) {
         $salida .= implode(', ', $ta);
         $salida .= '';
     }
-    return "<span>" . $salida . "</span>";
+    return $salida;
 }
 
 function nombre_taxonomia_persona($nombre, $entrada, $salida) {
@@ -153,16 +153,16 @@ function lista_asociada($etiqueta, $etiquetaplural, $campos) {
     $salida = '';
     if ($campos) :
         //d($campos);
-        count($campos) ===  1 ? $salida .= '<div class="">' . $etiqueta . ': </div>' : $salida .= '<div class="">' . $etiquetaplural . ': </div>';
+        count($campos) ===  1 ? $salida .= '<span>' . $etiqueta . ': </span>' : $salida .= '<span>' . $etiquetaplural . ': </span>';
 
         $ta = array();
         foreach ($campos as $campo) :
-            $a_p = '<div class="">' . $campo . '</div>';
+            $a_p = '<span>' . $campo . '</span>';
             array_push($ta, $a_p);
         endforeach;
         $salida .= implode(', ', $ta);
         $salida .= '';
     endif;
 
-    return "<div class='mb-4'>" . $salida . "</div>";
+    return $salida;
 }

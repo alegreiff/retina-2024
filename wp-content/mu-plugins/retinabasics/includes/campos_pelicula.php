@@ -18,12 +18,12 @@ function rl_galeria($cadena) {
 
 ?>
 
-    <sectipn class="splide" id="js_single_video_galeria">
+<section class="splide" id="js_single_video_galeria">
 
-        <div class="splide__track">
+    <div class="splide__track">
 
-            <ul class="splide__list">
-                <?
+        <ul class="splide__list">
+            <?
                 $contador = 0;
                 foreach ($res as $image) {
                     $contador++;
@@ -33,18 +33,18 @@ function rl_galeria($cadena) {
                     );
 
                 ?>
-                    <div class="splide__slide grid place-items-center bg-red-500 p-8 m-4">
-                        <img src="<?php echo $media[0] ?>" />
-                    </div>
+            <div class="splide__slide grid place-items-center  p-8 m-4">
+                <img src="<?php echo $media[0] ?>" />
+            </div>
 
-                <?php
+            <?php
                 }
 
                 ?>
-            </ul>
-        </div>
+        </ul>
+    </div>
 
-    </sectipn>
+</section>
 
 
 <?php
