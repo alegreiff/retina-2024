@@ -9,7 +9,8 @@
     font-medium 
     rounded-full 
     text-lg px-5 py-2.5 
-    text-center mb-2;
+    text-center mb-2
+    text-rl-blanco;
 }
 
 /* .retibutton2 {

@@ -16,10 +16,10 @@ function retlat_trailer_home() {
 
     $r2_trailer_externo = get_field('r2_trailer_es_interno', 'option');
 ?>
-    <div class="mt-4 md:grid md:grid-cols-2 ">
+<div class="mt-4 md:grid md:grid-cols-2 ">
 
-        <!-- <div class="rl_trailerfranja md:col-span-2 justify-self-end"><?php echo $r2_trailer_texto; ?> </div> -->
-        <p class="md:col-span-2 justify-self-end
+    <!-- <div class="rl_trailerfranja md:col-span-2 justify-self-end"><?php echo $r2_trailer_texto; ?> </div> -->
+    <p class="md:col-span-2 justify-self-end
         text-right  
 		bg-gradient-to-r from-rl-morasuave to-rl-amarillo
 		text-3xl font-bold p-4 
@@ -31,25 +31,27 @@ function retlat_trailer_home() {
 
 
 
-        <a class="order-3 flex flex-col justify-center p-12 bg-rl-moramedio" href="<?php echo $r2_trailer_enlace; ?>">
-            <h3 class="mb-4 text-2xl font-bold  xl:text-3xl">
-                <?php echo $r2_trailer_titulo; ?>
-            </h3>
-            <p class=" "><?php echo $r2_trailer_logline; ?></p>
-            <button class='mt-8 retibutton self-start'>Ver película</button>
-        </a>
-        <div class="order-2 bg-rl-moramedio">
-            <?php
+    <a class="order-3 flex flex-col justify-center p-12 bg-rl-moramedio" href="<?php echo $r2_trailer_enlace; ?>">
+        <h3 class="mb-4 text-2xl text-rl-blanco font-bold  xl:text-3xl">
+            <?php echo $r2_trailer_titulo; ?>
+        </h3>
+        <p class="text-rl-blanco"><?php echo $r2_trailer_logline; ?></p>
+        <button class='mt-8 retibutton self-start'>Ver película</button>
+    </a>
+    <div class="order-2 bg-rl-moramedio">
+        <?php
+            
             echo peliculaTrailer(getYouTubeId($r2_trailer_mostrar));
+
 
             ?>
 
 
-        </div>
-
-
-
     </div>
+
+
+
+</div>
 
 <?php
 

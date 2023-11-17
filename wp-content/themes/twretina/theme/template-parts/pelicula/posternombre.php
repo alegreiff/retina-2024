@@ -25,7 +25,7 @@ $duracion = '<svg class="text-rl-blanco  stroke-current fill-transparent w-8 h-8
 <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg>
 ' . $duracion . ' min.';
-$microdatos = array($pais, $year, $duracion, $genero);
+$microdatos = array("🇨🇴 " . $pais, $year, $duracion, $genero);
 
 
 $muestraposter = wp_get_attachment_image($poster, 'poster-mini', false, array(
@@ -42,8 +42,8 @@ $muestraposter = wp_get_attachment_image($poster, 'poster-mini', false, array(
     <?php
     if ($inactiva) {
     ?>
-    <div class="">PELICULA INACTIVÉ
-    </div>
+        <div class="">PELICULA INACTIVÉ
+        </div>
     <?php
     }
     ?>
@@ -52,7 +52,7 @@ $muestraposter = wp_get_attachment_image($poster, 'poster-mini', false, array(
         <?php
         if ($otronombre) {
         ?>
-        <h3 class="rl_otronombre"><?php echo $otronombre; ?></h3>
+            <h3 class="rl_otronombre"><?php echo $otronombre; ?></h3>
         <?php
         }
         ?>
@@ -71,7 +71,7 @@ $muestraposter = wp_get_attachment_image($poster, 'poster-mini', false, array(
             <?php
             foreach ($microdatos as $dato) {
                 echo "<div class=''>";
-                echo $dato;
+                echo "<span class='text-2xl'>" . $dato . "</span>";
 
                 echo "</div>";
                 if (next($microdatos)) {

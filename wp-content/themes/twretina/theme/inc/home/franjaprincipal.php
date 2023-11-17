@@ -12,25 +12,25 @@ function retlat_franja_principal_spslider() {
 
 
 ?>
-    <div class="">
-        <h1 class="h2_home"><?php echo $texto; ?> en Retina Latina</h1>
-        <!-- <h2 class="h2_home "><?php echo $texto; ?> </h2> -->
-        <p class="p_copy"><?php echo $copy; ?></p>
-        <section class="splide" id="retinaxios">
+<div class="">
+    <h1 class="h2_home"><?php echo $texto; ?> en Retina Latina</h1>
+    <!-- <h2 class="h2_home "><?php echo $texto; ?> </h2> -->
+    <p class="p_copy"><?php echo $copy; ?></p>
+    <section class="splide" id="js_retinaprincipal">
 
 
-            <div class="splide__track">
-                <ul class="grid grid-cols-3 splide__list">
-                    <?php
+        <div class="splide__track">
+            <ul class="grid grid-cols-3 splide__list">
+                <?php
                     rl_loop_peliculas_inicio_splide($numero, $categoria);
                     ?>
-                </ul>
+            </ul>
 
-            </div>
+        </div>
 
-        </section>
+    </section>
 
-    </div>
+</div>
 
 <?php
 }

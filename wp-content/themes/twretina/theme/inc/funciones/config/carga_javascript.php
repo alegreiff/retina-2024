@@ -19,7 +19,7 @@ function rl_carga_swiper() {
         wp_enqueue_script('youtube-light', get_template_directory_uri() . '/js/light-youtube-embedd.min.js', array(), RL_VERSION, true);
     }
 }
-add_action('wp_enqueue_scripts', 'rl_carga_swiper');
+//add_action('wp_enqueue_scripts', 'rl_carga_swiper');
 
 
 
@@ -39,6 +39,7 @@ function rl_carga_splide() {
             RL_VERSION,
             true
         );
+        wp_enqueue_script('youtube-light', get_template_directory_uri() . '/js/light-youtube-embedd.min.js', array(), RL_VERSION, true);
     }
 }
 add_action('wp_enqueue_scripts', 'rl_carga_splide');

@@ -31,7 +31,7 @@
 		"retina": "concurrently 'wp server --host=latin23.local' 'browser-sync start --proxy \"https://latin23.local\" --files \"**/*\" --no-notify' 'npm-run-all watch:**'",
 		"development:tailwind:frontend": "npx tailwindcss --postcss -i ./tailwind/tailwind.css -c ./tailwind/tailwind.config.js -o ./theme/style.css",
 		"development:tailwind:editor": "cross-env _TW_TARGET=editor npx tailwindcss --postcss -i ./tailwind/tailwind.css -c ./tailwind/tailwind.config.js -o ./theme/style-editor.css",
-		"development:esbuild": "npx esbuild ./javascript/light-youtube-embedd.js ./javascript/single-video-tabs.js ./javascript/home-carousel.splide.js ./javascript/home-carousel.js ./javascript/buscadorpelis.js ./javascript/catalogosretina.js ./javascript/script.js ./javascript/block-editor.js ./javascript/tailwind-typography-classes.js --target=esnext --bundle --outdir=./theme/js --out-extension:.js=.min.js",
+		"development:esbuild": "npx esbuild ./javascript/light-youtube-embedd.js ./javascript/single-video-tabs.js ./javascript/home-carousel.splide.js ./javascript/home-carousel.js ./javascript/buscadorpelis.js ./javascript/menuretina.js ./javascript/catalogosretina.js ./javascript/script.js ./javascript/block-editor.js ./javascript/tailwind-typography-classes.js --target=esnext --bundle --outdir=./theme/js --out-extension:.js=.min.js",
 		"development": "run-p development:**",
 		"dev": "npm run development",
 		"watch:tailwind:frontend": "npm run development:tailwind:frontend -- --watch",

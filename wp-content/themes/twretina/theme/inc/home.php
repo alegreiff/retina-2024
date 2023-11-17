@@ -45,6 +45,7 @@ function rl_muestra_poster_home_splide($poster, $pais_pelicula, $duracion, $year
 require get_template_directory() . '/inc/home/carrusel.php';
 require get_template_directory() . '/inc/home/franjaprincipal.php';
 require get_template_directory() . '/inc/home/lasmasvistas.php';
+require get_template_directory() . '/inc/home/series.php';
 require get_template_directory() . '/inc/home/salidasproximas.php';
 require get_template_directory() . '/inc/home/entendencia.php';
 require get_template_directory() . '/inc/home/personajes.php';

@@ -63,3 +63,7 @@
 :root {
 	--primary-color: yellow;
 }
+
+#js_retinaseries-list {
+	@apply bg-amber-400 p-4 !important;
+}

@@ -42,7 +42,7 @@ function retlat_carrusel_spslide() {
             }
             echo "</div>
                 <div class='order-1 '>
-                    <div class='grid items-center content-center h-full py-8 px-8 lg:pl-12 lg:pr-20 bg-rl-moramedio'>
+                    <div class='grid items-center content-center h-full py-8 px-8 lg:pl-12 lg:pr-20 bg-rl-moramedio text-rl-blanco'>
                         <h3 class='font-bold text-2xl pt-2 lg:pt-0 2xl:text-5xl'>" . $slidesHome[$i]['titulo'] . "</h3>
                         <h5 class='font-medium text-xl'>" . $slidesHome[$i]['subtitulo'] . "</h5>
                         <div>

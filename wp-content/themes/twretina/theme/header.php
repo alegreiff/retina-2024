@@ -61,4 +61,23 @@
         </div> -->
 
         <!-- <div class="" id="content" class="bg-sky-900"> -->
-        <div class="mx-auto bg-rl-morafuerte " id="content">
+
+        <!-- <div class="mx-auto bg-rl-amarillo " id="content">
+        
+         -->
+
+
+        <!-- <div class="mx-auto bg-rl-amarillo " id="content"> -->
+        <!-- <div class="mx-auto bg-rl-amarillo " id="content"> -->
+        <!-- <div class="mx-auto bg-rl-amarillo " id="content"> -->
+
+
+        <!-- ACTUAL -->
+        <!-- <div class="mx-auto bg-rl-morafuerte text-rl-blanco " id="content"> -->
+        <!-- <div class="mx-auto bg-rl-verde text-rl-blanco" id="content"> -->
+        <!-- <div class="mx-auto bg-rl-morablanco text-rl-morafuerte" id="content"> -->
+
+        <!-- <div class="mx-auto bg-rl-amarillo " id="content"> -->
+
+        <!-- <div class="mx-auto bg-rl-blanco text-rl-morafuerte " id="content"> -->
+        <div class="mx-auto bg-rl-morafuerte text-rl-blanco" id="content">

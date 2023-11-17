@@ -148,6 +148,7 @@ add_action('widgets_init', 'rl_widgets_init');
 function rl_scripts() {
 	wp_enqueue_style('twretina-style', get_stylesheet_uri(), array(), RL_VERSION);
 	wp_enqueue_script('twretina-script', get_template_directory_uri() . '/js/script.min.js', array(), RL_VERSION, true);
+	wp_enqueue_script('twreinta-menu', get_template_directory_uri() . '/js/menuretina.min.js', array(), RL_VERSION, false);
 
 	if (is_singular() && comments_open() && get_option('thread_comments')) {
 		wp_enqueue_script('comment-reply');
@@ -266,3 +267,19 @@ add_action('after_setup_theme', 'themename_custom_logo_setup');
 
 //FUNCIONES AUXILIARES BUSCADOR DINÁMICO EN RETINA LATINA
 require get_template_directory() . '/inc/funciones/menu/menu-personalizado.php';
+
+
+
+
+
+
+
+add_filter('wp_nav_menu_items', 'add_search_to_nav', 10, 2);
+
+function add_search_to_nav($items, $args) {
+	$buscaUrl = esc_url(site_url('/busca'));
+	$items .= '<div class="inline-flex site-header__util">
+	<a href="' . $buscaUrl . '" title="Buscador" class="search-trigger js-search-trigger"><i class="fa fa-search pc_busca" aria-hidden="true"></i></a>
+  </div>';
+	return $items;
+}
