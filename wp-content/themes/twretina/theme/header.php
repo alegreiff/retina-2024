@@ -22,7 +22,7 @@
     <?php wp_head(); ?>
 </head>
 
-<body <?php body_class('dark');  ?>>
+<body <?php body_class('');  ?>>
 
     <!-- <header class="relative flex items-center justify-center h-screen mb-12 overflow-hidden">
         <div class="relative z-30 p-5 text-2xl text-white bg-transparent bg-opacity-50 rounded-xl">

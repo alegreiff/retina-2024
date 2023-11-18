@@ -13,159 +13,303 @@ get_header();
 
 global $wp;
 $categoria = add_query_arg(array(), $wp->request);
+$segmentos = explode("/", $categoria);
 
-$contenido = $post->post_content;
+$slug = end($segmentos);
 
-$rl_docum = rl_genero_documental();
-$rl_ficci = rl_genero_ficcion();
-$rl_exper = rl_generoexperimental();
-$rl_corto = rl_formato_corto();
-$rl_largo = rl_formato_largo();
 
-$rl_BOL = rl_cat_bolivia();
-$rl_COL = rl_cat_colombia();
-$rl_ECU = rl_cat_ecuador();
-$rl_MEX = rl_cat_mexico();
-$rl_PER = rl_cat_peru();
-$rl_URU = rl_cat_uruguay();
-$rl_CU = rl_cat_cuba();
-$rl_ARCHIVO = rl_cat_archivo();
-$rl_MUNDO = rl_cat_mundo();
-
+$tipo = rl_busca_segmento($slug);
 
 print_r("<pre>");
-print_r($categoria);
+print_r($slug . ":" . $tipo);
+
 print_r("</pre>");
-
-if ($categoria === 'catalogo') {
-    $cat = 0;
-} else if ($categoria === 'todoelmundo') {
-
-    $cat = categoria_mundo();
-} else {
-    $cat = get_term_by('slug', $categoria, 'videos_categories')->term_id;
+$clasefiltros = '';
+if (isset($tipo)) {
+    $clasefiltros = 'hidden';
 }
-
-/* print_r("<pre>");
-print_r($cat);
-print_r("</pre>"); */
 
 ?>
 
-<div class="rl_filtros">
-    <form id="filter" class="filtro_main_catalogo">
-        <input type="hidden" name="action" value="filtro_peliculas_retina">
-        <input type="hidden" name="current_page" value=2>
-        <!-- <input type="hidden" name="page" value="nextPage"> -->
-
-        <!-- <input type="hidden" name="categoria_mostrada" value="<?php echo $cat; ?>"> -->
-
-        <div class="controles-paises flex gap-4 justify-start items-start">
-
-
-            <ul
-                class="w-48 text-sm  text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-                <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-                    <div class="flex items-center pl-3">
-                        <input id="paisall" type="radio" checked value="" name="categoria_mostrada"
-                            class="radio radio-primary dark:radio-accent">
-                        <label for="paisall" class="w-full py-3 ml-2 text-sm  text-gray-900 dark:text-gray-300">Todos
-                            los
-                            países
-                        </label>
-                    </div>
-                </li>
-
-                <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-                    <div class="flex items-center pl-3">
-                        <input id="paisbol" type="radio" value="<?php echo $rl_BOL; ?>" name="categoria_mostrada"
-                            class="radio radio-primary dark:radio-accent">
-                        <label for="paisbol" class="w-full py-3 ml-2 text-sm  text-gray-900 dark:text-gray-300">Bolivia
-                        </label>
-                    </div>
-                </li>
-                <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-                    <div class="flex items-center pl-3">
-                        <input id="paiscol" type="radio" value="<?php echo $rl_COL; ?>" name="categoria_mostrada"
-                            class="radio radio-primary dark:radio-accent">
-                        <label for="paiscol" class="w-full py-3 ml-2 text-sm  text-gray-900 dark:text-gray-300">Colombia
-                        </label>
-                    </div>
-                </li>
-                <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-                    <div class="flex items-center pl-3">
-                        <input id="paisecu" type="radio" value="<?php echo $rl_ECU; ?>" name="categoria_mostrada"
-                            class="radio radio-primary dark:radio-accent">
-                        <label for="paisecu" class="w-full py-3 ml-2 text-sm  text-gray-900 dark:text-gray-300">Ecuador
-                        </label>
-                    </div>
-                </li>
-                <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-                    <div class="flex items-center pl-3">
-                        <input id="paismex" type="radio" value="<?php echo $rl_MEX; ?>" name="categoria_mostrada"
-                            class="radio radio-primary dark:radio-accent">
-                        <label for="paismex" class="w-full py-3 ml-2 text-sm  text-gray-900 dark:text-gray-300">México
-                        </label>
-                    </div>
-                </li>
-                <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-                    <div class="flex items-center pl-3">
-                        <input id="paisper" type="radio" value="<?php echo $rl_PER; ?>" name="categoria_mostrada"
-                            class="radio radio-primary dark:radio-accent">
-                        <label for="paisper" class="w-full py-3 ml-2 text-sm  text-gray-900 dark:text-gray-300">Perú
-                        </label>
-                    </div>
-                </li>
-                <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-                    <div class="flex items-center pl-3">
-                        <input id="paisuru" type="radio" value="<?php echo $rl_URU; ?>" name="categoria_mostrada"
-                            class="radio radio-primary dark:radio-accent">
-                        <label for="paisuru" class="w-full py-3 ml-2 text-sm  text-gray-900 dark:text-gray-300">Uruguay
-                        </label>
-                    </div>
-                </li>
-
-                <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-                    <div class="flex items-center pl-3">
-                        <input id="paiscub" type="radio" value="<?php echo $rl_CU; ?>" name="categoria_mostrada"
-                            class="radio radio-primary dark:radio-accent">
-                        <label for="paiscub" class="w-full py-3 ml-2 text-sm  text-gray-900 dark:text-gray-300">Cuba
-                        </label>
-                    </div>
-                </li>
-                <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-                    <div class="flex items-center pl-3">
-                        <input id="paisallworld" type="radio" value="<?php echo $rl_MUNDO; ?>" name="categoria_mostrada"
-                            class="radio radio-primary dark:radio-accent">
-                        <label for="paisallworld"
-                            class="w-full py-3 ml-2 text-sm  text-gray-900 dark:text-gray-300">Disponibles en
-                            todo el mundo
-                        </label>
-                    </div>
-                </li>
-
-
-
-            </ul>
-            <ul
-                class="w-48 text-sm  text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-                <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-                    <div class="flex items-center pl-3">
-                        <input id="paisarchive" type="radio" value="<?php echo $rl_ARCHIVO; ?>"
-                            name="categoria_mostrada" class="radio radio-primary dark:radio-accent">
-                        <label for="paisarchive"
-                            class="w-full py-3 ml-2 text-sm  text-gray-900 dark:text-gray-300">Archivo
-                        </label>
-                    </div>
-                </li>
-            </ul>
+<section class="container mx-auto flex text-rl-morafuerte">
+    <div class="bg-red-500">
 
 
 
 
+    </div>
 
 
-            <!-- <div class="switch-field">
+
+    <div class="rl_filtros <?php echo $clasefiltros; ?>">
+        <form id="filter" class="filtro_main_catalogo">
+            <input type="hidden" name="action" value="filtro_peliculas_retina">
+            <input type="hidden" name="current_page" value=2>
+            <!-- <input type="hidden" name="page" value="nextPage"> -->
+
+            <!-- <input type="hidden" name="categoria_mostrada" value="<?php echo $cat; ?>"> -->
+
+            <div class="controles-paises flex gap-4 justify-start items-start">
+
+                <!-- <div class="dropdown rl_filtros_dropdown">
+                    <label tabindex="0" class="btn m-1">Países</label>
+
+                    <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+                        <li class="">
+                            <div class="flex items-center pl-3">
+                                <?php
+                                if (!isset($tipo)) {
+                                ?>
+                                <input id="paisall" type="radio" checked value="" name="categoria_mostrada"
+                                    class="radio radio-primary dark:radio-accent">
+                                <?php
+                                } else {
+                                ?>
+                                <input id="paisall" type="radio" value="" name="categoria_mostrada"
+                                    class="radio radio-primary dark:radio-accent">
+                                <?php
+                                }
+                                ?>
+                                <label for="paisall"
+                                    class="">Todos
+                                    los
+                                    países
+                                </label>
+                            </div>
+                        </li>
+
+                        <li class="">
+                            <div class="flex items-center pl-3">
+                                <input id="paisbol" type="radio" value="<?php echo $rl_BOL; ?>"
+                                    name="categoria_mostrada" class="radio radio-primary dark:radio-accent">
+                                <label for="paisbol"
+                                    class="">🇧🇴
+                                    Bolivia
+                                </label>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="flex items-center pl-3">
+                                <?php
+                                $checked = '';
+                                if (isset($tipo) && isset($slug) && $slug === 'colombia') {
+                                    $checked = "checked";
+                                }
+                                ?>
+                                <input id="paiscol" type="radio" <?php echo $checked; ?> value="<?php echo $rl_COL; ?>"
+                                    name="categoria_mostrada" class="radio radio-primary dark:radio-accent">
+                                <label for="paiscol"
+                                    class="">Colombia
+                                </label>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="flex items-center pl-3">
+                                <input id="paisecu" type="radio" value="<?php echo $rl_ECU; ?>"
+                                    name="categoria_mostrada" class="radio radio-primary dark:radio-accent">
+                                <label for="paisecu"
+                                    class="">Ecuador
+                                </label>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="flex items-center pl-3">
+                                <input id="paismex" type="radio" value="<?php echo $rl_MEX; ?>"
+                                    name="categoria_mostrada" class="radio radio-primary dark:radio-accent">
+                                <label for="paismex"
+                                    class="">México
+                                </label>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="flex items-center pl-3">
+                                <?php
+                                $checked = '';
+                                if (isset($tipo) && isset($slug) && $slug === 'peru') {
+                                    $checked = "checked";
+                                }
+                                ?>
+                                <input id="paisper" type="radio" <?php echo $checked; ?> value="<?php echo $rl_PER; ?>"
+                                    name="categoria_mostrada" class="radio radio-primary dark:radio-accent">
+
+                                <label for="paisper"
+                                    class="">Perú
+                                </label>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="flex items-center pl-3">
+                                <input id="paisuru" type="radio" value="<?php echo $rl_URU; ?>"
+                                    name="categoria_mostrada" class="radio radio-primary dark:radio-accent">
+                                <label for="paisuru"
+                                    class="">Uruguay
+                                </label>
+                            </div>
+                        </li>
+
+                        <li class="">
+                            <div class="flex items-center pl-3">
+                                <input id="paiscub" type="radio" value="<?php echo $rl_CU; ?>" name="categoria_mostrada"
+                                    class="radio radio-primary dark:radio-accent">
+                                <label for="paiscub"
+                                    class="">Cuba
+                                </label>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="flex items-center pl-3">
+                                <input id="paisallworld" type="radio" value="<?php echo $rl_MUNDO; ?>"
+                                    name="categoria_mostrada" class="radio radio-primary dark:radio-accent">
+                                <label for="paisallworld"
+                                    class="">Disponibles en
+                                    todo el mundo
+                                </label>
+                            </div>
+                        </li>
+                    </ul>
+                </div> -->
+                <button id="dropdownDividerButton1" data-dropdown-toggle="dropdownDivider1"
+                    class="
+                    text-rl-morafuerte bg-rl-morablanco 
+                    hover:bg-rl-morasuave hover:text-rl-morablanco 
+                    focus:ring-4 focus:outline-none focus:ring-rl-morafuerte font-bold rounded-lg text-lg px-5 py-2.5 text-center inline-flex items-center " type="button">
+
+                    <span>Países</span> <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m1 1 4 4 4-4" />
+
+                    </svg>
+                </button>
+
+                <!-- Dropdown menu -->
+                <div id="dropdownDivider1" class="z-10 hidden rl_dividerdrop_1">
+                    <ul class="py-2" aria-labelledby="dropdownDividerButton">
+                        <li class="">
+                            <div class="flex items-center pl-3">
+                                <?php
+                                if (!isset($tipo)) {
+                                ?>
+                                <input id="paisall" type="radio" checked value="" name="categoria_mostrada"
+                                    class="radio radio-primary dark:radio-accent">
+                                <?php
+                                } else {
+                                ?>
+                                <input id="paisall" type="radio" value="" name="categoria_mostrada"
+                                    class="radio radio-primary dark:radio-accent">
+                                <?php
+                                }
+                                ?>
+                                <label for="paisall" class="">Todos
+                                    los
+                                    países
+                                </label>
+                            </div>
+                        </li>
+
+                        <li class="">
+                            <div class="flex items-center pl-3">
+                                <input id="paisbol" type="radio" value="<?php echo $rl_BOL; ?>"
+                                    name="categoria_mostrada" class="radio radio-primary dark:radio-accent">
+                                <label for="paisbol" class="">
+                                    Bolivia
+                                </label>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="flex items-center pl-3">
+                                <?php
+                                $checked = '';
+                                if (isset($tipo) && isset($slug) && $slug === 'colombia') {
+                                    $checked = "checked";
+                                }
+                                ?>
+                                <input id="paiscol" type="radio" <?php echo $checked; ?> value="<?php echo $rl_COL; ?>"
+                                    name="categoria_mostrada" class="radio radio-primary dark:radio-accent">
+                                <label for="paiscol" class="">Colombia
+                                </label>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="flex items-center pl-3">
+                                <input id="paisecu" type="radio" value="<?php echo $rl_ECU; ?>"
+                                    name="categoria_mostrada" class="radio radio-primary dark:radio-accent">
+                                <label for="paisecu" class="">Ecuador
+                                </label>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="flex items-center pl-3">
+                                <input id="paismex" type="radio" value="<?php echo $rl_MEX; ?>"
+                                    name="categoria_mostrada" class="radio radio-primary dark:radio-accent">
+                                <label for="paismex" class="">México
+                                </label>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="flex items-center pl-3">
+                                <?php
+                                $checked = '';
+                                if (isset($tipo) && isset($slug) && $slug === 'peru') {
+                                    $checked = "checked";
+                                }
+                                ?>
+                                <input id="paisper" type="radio" <?php echo $checked; ?> value="<?php echo $rl_PER; ?>"
+                                    name="categoria_mostrada" class="radio radio-primary dark:radio-accent">
+
+                                <label for="paisper" class="">Perú
+                                </label>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="flex items-center pl-3">
+                                <input id="paisuru" type="radio" value="<?php echo $rl_URU; ?>"
+                                    name="categoria_mostrada" class="radio radio-primary dark:radio-accent">
+                                <label for="paisuru" class="">Uruguay
+                                </label>
+                            </div>
+                        </li>
+
+                        <li class="">
+                            <div class="flex items-center pl-3">
+                                <input id="paiscub" type="radio" value="<?php echo $rl_CU; ?>" name="categoria_mostrada"
+                                    class="radio radio-primary dark:radio-accent">
+                                <label for="paiscub" class="">Cuba
+                                </label>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="flex items-center pl-3">
+                                <input id="paisallworld" type="radio" value="<?php echo $rl_MUNDO; ?>"
+                                    name="categoria_mostrada" class="radio radio-primary dark:radio-accent">
+                                <label for="paisallworld" class="">Disponibles en
+                                    todo el mundo
+                                </label>
+                            </div>
+                        </li>
+                    </ul>
+
+                </div>
+
+
+                <ul
+                    class="w-48 text-sm  text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                    <li class="">
+                        <div class="flex items-center pl-3">
+                            <input id="paisarchive" type="radio" value="<?php echo $rl_ARCHIVO; ?>"
+                                name="categoria_mostrada" class="radio radio-primary dark:radio-accent">
+                            <label for="paisarchive" class="">Archivo
+                            </label>
+                        </div>
+                    </li>
+                </ul>
+
+
+
+
+
+
+                <!-- <div class="switch-field">
                 <input type="radio" id="paisall" name="categoria_mostrada" value="" checked />
                 <label for="paisall">Todos los países</label>
 
@@ -184,109 +328,209 @@ print_r("</pre>"); */
 
             </div> -->
 
-            <ul
-                class="w-48 text-sm  text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-                <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-                    <div class="flex items-center pl-3">
-                        <input id="formato1" type="radio" value="" checked name="formato"
-                            class="radio radio-primary dark:radio-accent">
-                        <label for="formato1" class="w-full py-3 ml-2 text-sm  text-gray-900 dark:text-gray-300">Todas
-                            las
-                            duraciones
-                        </label>
-                    </div>
-                </li>
-                <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-                    <div class="flex items-center pl-3">
-                        <input id="formato3" type="radio" value="<?php echo $rl_corto; ?>" name="formato"
-                            class="radio radio-primary dark:radio-accent">
-                        <label for="formato3"
-                            class="w-full py-3 ml-2 text-sm  text-gray-900 dark:text-gray-300">Cortometrajes
-                        </label>
-                    </div>
-                </li>
+                <!-- <div class="dropdown rl_filtros_dropdown">
+                    <label tabindex="0" class="btn m-1">Duración</label>
 
-                <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-                    <div class="flex items-center pl-3">
-                        <input id="formato2" type="radio" value="<?php echo $rl_largo; ?>" name="formato"
-                            class="radio radio-primary dark:radio-accent">
-                        <label for="formato2"
-                            class="w-full py-3 ml-2 text-sm  text-gray-900 dark:text-gray-300">Largometrajes
-                        </label>
-                    </div>
-                </li>
+                    <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+                        <li class="">
+                            <div class="flex items-center pl-3">
+                                <input id="formato1" type="radio" value="" checked name="formato"
+                                    class="radio radio-primary dark:radio-accent">
+                                <label for="formato1"
+                                    class="">Todas
+                                    las
+                                    duraciones
+                                </label>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="flex items-center pl-3">
+                                <input id="formato3" type="radio" value="<?php echo $rl_corto; ?>" name="formato"
+                                    class="radio radio-primary dark:radio-accent">
+                                <label for="formato3"
+                                    class="">Cortometrajes
+                                </label>
+                            </div>
+                        </li>
 
-
-
-            </ul>
-
-            <!-- <div class="switch-field">
-                <input type="radio" id="switch_3_left" name="formato" value="" checked />
-                <label for="switch_3_left">Todas las duraciones</label>
-                <input type="radio" id="switch_3_center" name="formato" value="<?php echo $rl_corto; ?>" />
-                <label for="switch_3_center">Cortometrajes</label>
-                <input type="radio" id="switch_3_right" name="formato" value="<?php echo $rl_largo; ?>" />
-                <label for="switch_3_right">Largometrajes</label>
-            </div> -->
-            <ul
-                class="w-48 text-sm  text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-                <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-                    <div class="flex items-center pl-3">
-                        <input id="genero0" type="radio" value="" checked name="genero"
-                            class="radio radio-primary dark:radio-accent">
-                        <label for="genero0" class="w-full py-3 ml-2 text-sm  text-gray-900 dark:text-gray-300">Todos
-                            los
-                            géneros
-                        </label>
-                    </div>
-                </li>
-                <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-                    <div class="flex items-center pl-3">
-                        <input id="genero1" type="radio" value="<?php echo $rl_docum; ?>" name="genero"
-                            class="radio radio-primary dark:radio-accent">
-                        <label for="genero1"
-                            class="w-full py-3 ml-2 text-sm  text-gray-900 dark:text-gray-300">Documental
-                        </label>
-                    </div>
-                </li>
-
-                <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-                    <div class="flex items-center pl-3">
-                        <input id="genero2" type="radio" value="<?php echo $rl_ficci; ?>" name="genero"
-                            class="radio radio-primary dark:radio-accent">
-                        <label for="genero2" class="w-full py-3 ml-2 text-sm  text-gray-900 dark:text-gray-300">Ficción
-                        </label>
-                    </div>
-                </li>
-
-                <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-                    <div class="flex items-center pl-3">
-                        <input id="genero3" type="radio" value="<?php echo $rl_exper; ?>" name="genero"
-                            class="radio radio-primary dark:radio-accent">
-                        <label for="genero3"
-                            class="w-full py-3 ml-2 text-sm  text-gray-900 dark:text-gray-300">Experimental
-                        </label>
-                    </div>
-                </li>
+                        <li class="">
+                            <div class="flex items-center pl-3">
+                                <input id="formato2" type="radio" value="<?php echo $rl_largo; ?>" name="formato"
+                                    class="radio radio-primary dark:radio-accent">
+                                <label for="formato2"
+                                    class="">Largometrajes
+                                </label>
+                            </div>
+                        </li>
 
 
 
-            </ul>
-            <!--  <div class="switch-field">
-                <input type="radio" id="genero_left" name="genero" value="" checked />
-                <label for="genero_left">Todos los géneros</label>
-                <input type="radio" id="genero_center" name="genero" value="<?php echo $rl_docum; ?>" />
-                <label for="genero_center">Documental</label>
-                <input type="radio" id="genero_right" name="genero" value="<?php echo $rl_ficci; ?>" />
-                <label for="genero_right">Ficción</label>
+                    </ul>
+                </div> -->
 
-                <input type="radio" id="genero_right1" name="genero" value="<?php echo $rl_exper; ?>" />
-                <label for="genero_right1">Experimental</label>
-            </div> -->
-            <div><span class="mensaje">Mensaje</span></div>
-        </div>
-    </form>
-</div><!-- filtros-->
+                <button id="dropdownDividerButton2" data-dropdown-toggle="dropdownDivider2"
+                    class="text-rl-morafuerte bg-rl-morablanco 
+                    hover:bg-rl-morasuave hover:text-rl-morablanco 
+                    focus:ring-4 focus:outline-none focus:ring-rl-morafuerte font-bold rounded-lg text-lg px-5 py-2.5 text-center inline-flex items-center " type="button">Duración <svg
+                        class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 10 6">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m1 1 4 4 4-4" />
+                    </svg>
+                </button>
+
+                <!-- Dropdown menu -->
+                <div id="dropdownDivider2" class="z-10 hidden  rl_dividerdrop_1">
+                    <ul class="py-2 text-sm text-gray-700 z-50" aria-labelledby="dropdownDividerButton">
+                        <li class="">
+                            <div class="flex items-center pl-3">
+                                <input id="formato1" type="radio" value="" checked name="formato"
+                                    class="radio radio-primary dark:radio-accent">
+                                <label for="formato1" class="">Todas
+                                    las
+                                    duraciones
+                                </label>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="flex items-center pl-3">
+                                <input id="formato3" type="radio" value="<?php echo $rl_corto; ?>" name="formato"
+                                    class="radio radio-primary dark:radio-accent">
+                                <label for="formato3" class="">Cortometrajes
+                                </label>
+                            </div>
+                        </li>
+
+                        <li class="">
+                            <div class="flex items-center pl-3">
+                                <input id="formato2" type="radio" value="<?php echo $rl_largo; ?>" name="formato"
+                                    class="radio radio-primary dark:radio-accent">
+                                <label for="formato2" class="">Largometrajes
+                                </label>
+                            </div>
+                        </li>
+                    </ul>
+
+                </div>
+                <button id="dropdownDividerButton3" data-dropdown-toggle="dropdownDivider3"
+                    class="text-rl-morafuerte bg-rl-morablanco 
+                    hover:bg-rl-morasuave hover:text-rl-morablanco 
+                    focus:ring-4 focus:outline-none focus:ring-rl-morafuerte font-bold rounded-lg text-lg px-5 py-2.5 text-center inline-flex items-center " type="button">Géneros <svg
+                        class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 10 6">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m1 1 4 4 4-4" />
+                    </svg>
+                </button>
+
+                <!-- Dropdown menu -->
+                <div id="dropdownDivider3" class="z-10 hidden rl_dividerdrop_1">
+                    <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownDividerButton">
+                        <li class="">
+                            <div class="flex items-center pl-3">
+                                <input id="genero0" type="radio" value="" checked name="genero"
+                                    class="radio radio-primary dark:radio-accent">
+                                <label for="genero0" class="">Todos
+                                    los
+                                    géneros
+                                </label>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="flex items-center pl-3">
+                                <input id="genero1" type="radio" value="<?php echo $rl_docum; ?>" name="genero"
+                                    class="radio radio-primary ">
+                                <label for="genero1" class="">Documental
+                                </label>
+                            </div>
+                        </li>
+
+                        <li class="">
+                            <div class="flex items-center pl-3">
+                                <input id="genero2" type="radio" value="<?php echo $rl_ficci; ?>" name="genero"
+                                    class="radio radio-primary ">
+                                <label for="genero2" class="">Ficción
+                                </label>
+                            </div>
+                        </li>
+
+                        <li class="">
+                            <div class="flex items-center pl-3">
+                                <input id="genero3" type="radio" value="<?php echo $rl_exper; ?>" name="genero"
+                                    class="radio radio-primary ">
+                                <label for="genero3" class="">Experimental
+                                </label>
+                            </div>
+                        </li>
+                    </ul>
+
+                </div>
+
+                <!-- <div class="dropdown rl_filtros_dropdown">
+                    <label tabindex="0" class="btn m-1 ">Género</label>
+
+                    <ul tabindex="0" class="dropdown-content z-[1] menu">
+                    <li class="">
+                        <div class="flex items-center pl-3">
+                            <input id="genero0" type="radio" value="" checked name="genero"
+                                class="radio radio-primary dark:radio-accent">
+                            <label for="genero0"
+                                class="">Todos
+                                los
+                                géneros
+                            </label>
+                        </div>
+                    </li>    
+                    <li class="">
+                            <div class="flex items-center pl-3">
+                                <input id="genero1" type="radio" value="<?php echo $rl_docum; ?>" name="genero"
+                                    class="radio radio-primary ">
+                                <label for="genero1" class="">Documental
+                                </label>
+                            </div>
+                        </li>
+
+                        <li class="">
+                            <div class="flex items-center pl-3">
+                                <input id="genero2" type="radio" value="<?php echo $rl_ficci; ?>" name="genero"
+                                    class="radio radio-primary ">
+                                <label for="genero2" class="">Ficción
+                                </label>
+                            </div>
+                        </li>
+
+                        <li class="">
+                            <div class="flex items-center pl-3">
+                                <input id="genero3" type="radio" value="<?php echo $rl_exper; ?>" name="genero"
+                                    class="radio radio-primary ">
+                                <label for="genero3" class="">Experimental
+                                </label>
+                            </div>
+                        </li>
+                    </ul>
+                </div> -->
+
+                <!-- <ul
+                    class="w-48 text-sm  text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                    <select class="text-rl-morafuerte text-2xl" name="genero"
+                        class="select select-secondary w-full max-w-xs">
+                        <option id="genero0" name="genero" selected>Todos los géneros</option>
+                        <option id="genero1" name="genero" value="<?php echo $rl_docum; ?>">Documental</option>
+                        <option id="genero2" name="genero" value="<?php echo $rl_ficci; ?>">Ficción</option>
+                        <option id="genero3" name="genero" value="<?php echo $rl_exper; ?>">Experimental</option>
+
+
+                    </select>
+
+
+
+                </ul> -->
+
+                <div><span class="mensaje">Mensaje</span></div>
+            </div>
+        </form>
+    </div><!-- filtros-->
+</section>
 
 
 

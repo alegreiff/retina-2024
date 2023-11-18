@@ -230,6 +230,7 @@ require get_template_directory() . '/inc/home.php';
 
 //FUNCIONES AUXILIARES  CATÁLOGOS RETINA LATINA
 require get_template_directory() . '/inc/catalogos/catalogosretina.php';
+require get_template_directory() . '/inc/catalogos/catalogo-conf.php';
 
 
 //FUNCIONES AUXILIARES BUSCADOR DINÁMICO EN RETINA LATINA
@@ -283,3 +284,13 @@ function add_search_to_nav($items, $args) {
   </div>';
 	return $items;
 }
+
+
+/* 
+AYUDA
+
+¿Cómo hago para que wordpress internamente redirija
+/catalogo/peru
+a la página page-catalogo.php
+
+*/

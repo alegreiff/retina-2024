@@ -175,7 +175,7 @@ function filtro_peliculas_retina() {
                 $estreno = '';
 
                 $salida .= '
-                <div class="    dark:  group relative retina_poster ' . $activa . ' ' . $estreno . '">
+                <div class="z-0 group relative retina_poster ' . $activa . ' ' . $estreno . '">
                 <div class="pt-2 pr-2">
             
                     <img class=" w-full object-cover group-hover:blur-[3px] group-hover:grayscale rounded-2xl" loading="lazy" src="' . $poster . '" alt="Afiche ' . $titulo . '" title="' . $titulo . '">
@@ -189,15 +189,11 @@ function filtro_peliculas_retina() {
                         <p class="pt-4 text-sm leading-4  ">' . $logline . '</p>
             
             
-                        <div class="absolute left-0 w-full p-1 bottom-8">
-                            <img src="' . get_stylesheet_directory_uri() . '/assets/images/play24.svg" alt="" class="w-8 h-8 mx-auto">
-            
-            
-                        </div>
+                        
                         <span class="rl_year">' . $year . '</span>
                     </div>
                 </a>
-                <span class="absolute top-0 right-0 z-20 rl_pais ">
+                <span class="absolute top-0 right-0  rl_pais ">
                 ' . $pais . ' </span>
             
             

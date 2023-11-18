@@ -111,5 +111,65 @@ iframe#iframePlayerCustom div #_xpncc {
 }
 
 .cataloco {
-	@apply bg-lime-300 grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 2xl:grid-cols-6 gap-2 place-items-center;
+	@apply bg-pink-300 grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 2xl:grid-cols-6 gap-2 place-items-center z-0;
+}
+
+select {
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+
+	background-color: transparent;
+	border: none;
+	padding: 0 1em 0 0;
+	margin: 0;
+	width: 100%;
+	font-family: inherit;
+	font-size: inherit;
+	cursor: inherit;
+	line-height: inherit;
+
+	z-index: 1;
+
+	outline: none;
+}
+
+.reforma {
+	@apply bg-amber-600 font-bold text-3xl;
+}
+.reforma * {
+	border-radius: 2rem !important;
+	background-color: aquamarine !important;
+}
+.dropdown:hover .dropdown-menu {
+	display: block;
+}
+.rl_filtros_dropdown > label {
+	@apply bg-rl-morablanco hover:bg-rl-verde;
+}
+.rl_filtros_dropdown ul {
+	@apply bg-rl-morablanco p-2 shadow  rounded-box w-52;
+}
+.rl_filtros_dropdown li:not(:last-child) {
+	@apply border-b border-rl-morafuerte;
+}
+
+.rl_dividerdrop_1 {
+	@apply font-bold  rounded-lg  p-2;
+}
+
+.rl_dividerdrop_1 ul {
+	@apply bg-rl-morablanco p-2 shadow  rounded-box;
+}
+
+.rl_dividerdrop_1 li {
+	@apply hover:bg-rl-morasuave/20;
+}
+
+.rl_dividerdrop_1 li:not(:last-child) {
+	@apply border-b border-rl-morafuerte;
+}
+
+.rl_dividerdrop_1 label {
+	@apply w-full py-3 ml-2 text-lg  text-rl-morafuerte cursor-pointer;
 }

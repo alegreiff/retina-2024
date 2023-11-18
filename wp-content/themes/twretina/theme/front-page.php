@@ -40,8 +40,7 @@
 <!--  lasmasvistas-->
 <div class="container  mx-auto mt-4 bg-gradient-to-r from-rl-morafuerte to-rl-morasuave">
     <!-- bg-gradient-to-r from-rl-morafuerte to-rl-morasuave -->
-    <div
-        class="container p-8 mx-auto bg-no-repeat bg-left bg-[length:453px_528px] bg-opacity-25 bg-[url('./assets/images/bg-masvistas.svg')]">
+    <div class="container p-8 mx-auto bg-no-repeat bg-left bg-[length:453px_528px] bg-opacity-25 bg-[url('./assets/images/bg-masvistas.svg')]">
         <?php echo rl_muestra_las_mas_vistas(); ?>
     </div>
 </div>
